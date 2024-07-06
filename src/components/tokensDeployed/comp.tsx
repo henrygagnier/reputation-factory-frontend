@@ -17,13 +17,13 @@ export default function TokensDeployed() {
         <div className={styles.createToken}>
             <div className={styles.title}>
                 <p className={styles.header}>Tokens Deployed</p>
-                <p className={styles.subheader}>The tokens you've created.</p>
+                <p className={styles.subheader}>The tokens you&apos;ve created.</p>
             </div>
             <div className={styles.inputs}>
                 
                 {tokensDeployed.length === 0 ? <p>No tokens deployed!</p> : tokensDeployed.map((token: string, index: number) => {
                     return (
-                        <div className={styles.tokenContainer} onClick={() => { navigator.clipboard.writeText(token) }}>
+                        <div className={styles.tokenContainer} onClick={() => { navigator.clipboard.writeText(token) }} key={index}>
                             <p className={styles.index}>#{index + 1}</p>
                             <p className={`${styles.address} ${styles.big}`}>{token}</p>
                             <p className={`${styles.address} ${styles.small}`}>{token.slice(0, 6) + "..." + token.slice(38)}</p>
