@@ -10,7 +10,7 @@
     background-color: white;
     border: 1px solid rgb(202, 202, 202);
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-top: 25px;
 }
 
 .createToken:last-child {
@@ -129,4 +129,19 @@
     margin: 0;
     color: rgb(160, 160, 160);
     margin-bottom: 7px;
+}
+.deployButton {
+    color: white;
+    background-color: rgb(65, 151, 255);
+    border-radius: 50px;
+    width: calc(100%);
+    padding: 10px;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+.deployButtonDisabled {
+    cursor: not-allowed;
+    background-color: rgb(47, 108, 183);
 }
