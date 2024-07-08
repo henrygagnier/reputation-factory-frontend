@@ -95,6 +95,7 @@ export default function Home() {
       <AdminRoles setAdmins={setAdmins} setUpdaters={setUpdaters} setOwner={setOwner} admins={admins} updaters={updaters} owner={owner}/>
       <Deployer updaters={updaters} owner={owner} admins={admins} tokenData={inputStrings} files={inputFiles} />
       <TokensDeployed/>
+      <p className={styles.credits}>Built by Henry Gagnier</p>
     </main>
   );
 }

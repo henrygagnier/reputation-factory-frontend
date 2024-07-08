@@ -26,7 +26,7 @@ interface AdminRolesProps {
 }
 
 const Deployer: React.FC<AdminRolesProps> = ({ admins, updaters, owner, tokenData, files }) => {
-    const { chainId } = useAccount();
+    const { chainId, isConnected } = useAccount();
     const { mutateAsync: upload } = useStorageUpload();
     const { data: hash, writeContract, isPending,error } = useWriteContract();
     console.log(error)
@@ -35,6 +35,10 @@ const Deployer: React.FC<AdminRolesProps> = ({ admins, updaters, owner, tokenDat
     // 0 = nothing
     // 1 = ipfs
     // 2 = eth
+
+    const isValidData = () => {
+
+    }
 
     const uploadToIpfs = async (file: File) => {
         const uploadUrl = await upload({
@@ -101,6 +105,8 @@ const Deployer: React.FC<AdminRolesProps> = ({ admins, updaters, owner, tokenDat
             console.error("Error deploying contract:", error);
         }
     };
+
+
     
     return (
         <div className={styles.createToken}>
@@ -109,7 +115,7 @@ const Deployer: React.FC<AdminRolesProps> = ({ admins, updaters, owner, tokenDat
                 <p className={styles.subheader}>Deploy your reputation tokens and earn OP!</p>
             </div>
             <div className={styles.inputs}>
-                <button className={`${styles.deployButton} ${state !== 0 || isPending ? styles.deployButtonDisabled : ""}`} onClick={() => deploy()}>{isPending ? "Deploying..." : state === 1 ? "Uploading Data..." : "Deploy"}</button>
+                <button className={`${styles.deployButton} ${state !== 0 || isPending || !isConnected ? styles.deployButtonDisabled : ""}`} onClick={() => deploy()}>{isConnected ? isPending ? "Deploying..." : state === 1 ? "Uploading Data..." : "Deploy" : "Not Connected"}</button>
             </div>
         </div>
     );
